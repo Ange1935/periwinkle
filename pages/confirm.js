@@ -3,6 +3,7 @@ import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import { useRouter } from 'next/router'
 import Rideselector from './components/Rideselector'
+import Link from 'next/link'
 
 
 const Confirm = () => {
@@ -10,8 +11,8 @@ const Confirm = () => {
   const {pickup,dropoff} = router.query
   
 
-    const [pickupcoordinates,setpickupcoordinates]=useState()
-    const [dropoffcoordinates,setdropoffcoordinates]=useState()
+    const [pickupcoordinates,setpickupcoordinates]=useState([0,0])
+    const [dropoffcoordinates,setdropoffcoordinates]=useState([0,0])
 
   const getPickUpCoordinates=(pickup)=>{
       fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
@@ -46,13 +47,21 @@ const Confirm = () => {
 
   return (
     <Wrapper>
+        {/*Button Container*/}
+    <Link href="/search">
+        <BackButton src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYAFkjxGT1kX9nVu88c4AktuMuABPX2kN1AA&usqp=CAU"/>
+    </Link>
+       {/*Button Container*/}
         <Map 
             pickupcoordinates={pickupcoordinates}
             dropoffcoordinates={dropoffcoordinates}
         />
         {/*ridecontainer*/}
         <RideContainer>
-        <Rideselector />
+        <Rideselector 
+        pickupcoordinates={pickupcoordinates}
+        dropoffcoordinates={dropoffcoordinates}
+        />
         <Confirmbuttoncontainer>
           <ConfirmButton>
           Confirm PWinkle Ride 
@@ -79,4 +88,12 @@ flex-1 flex flex-col h-1/2
 
 const ConfirmButton=tw.div`
 bg-black text-white my-4 mx-4 py-4 text-center text-xl
+`
+
+const ButtonContainer=tw.div`
+bg-white px-4
+`
+
+const BackButton=tw.img`
+h-12 w-10 cursor-pointer rounded-full
 `
