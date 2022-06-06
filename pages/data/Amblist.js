@@ -1,4 +1,4 @@
-export const Amblist = [
+export default Amblist = [
     {
       imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToONj1F_jnfRrwHHEXHIyAzfc3PDO-htctvw&usqp=CAU',
       service: 'Basic Ambulance',

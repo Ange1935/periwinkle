@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "babel src -d lib",
     "start": "node start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.18.1",
@@ -16,7 +17,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "typescript": "^4.7.3",
-    "vue-runtime-helpers": "^1.1.2"
+    "vue-runtime-helpers": "^1.1.2",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
