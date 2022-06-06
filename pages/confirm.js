@@ -48,9 +48,11 @@ const Confirm = () => {
   return (
     <Wrapper>
         {/*Button Container*/}
+        <ButtonContainer>
     <Link href="/search">
         <BackButton src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYAFkjxGT1kX9nVu88c4AktuMuABPX2kN1AA&usqp=CAU"/>
     </Link>
+        </ButtonContainer>
        {/*Button Container*/}
         <Map 
             pickupcoordinates={pickupcoordinates}
@@ -91,9 +93,9 @@ bg-black text-white my-4 mx-4 py-4 text-center text-xl
 `
 
 const ButtonContainer=tw.div`
-bg-white px-4
+rounded-full absolute top-4 left-4 z-10 bg-white shadow-md cursor-pointer
 `
 
 const BackButton=tw.img`
-h-12 w-10 cursor-pointer rounded-full
+h-10 w-10 object-contain
 `

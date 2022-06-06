@@ -1,22 +1,44 @@
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import Link from 'next/link'
+import {auth} from '../firebase'
+import { onAuthStateChanged,signOut } from 'firebase/auth'
+import { useRouter } from 'next/router'
+
 
 export default function Home() {
+
+  const [user,setUser]=useState(null)
+  const router=useRouter()
+  useEffect(()=>{
+      return onAuthStateChanged(auth,user =>{
+        if(user){
+          setUser({
+            name:user.displayName,
+            photoUrl:user.photoURL,
+          })
+        }
+        else{
+          setUser(null)
+          router.push('/login')
+        }
+      })
+  },[])
+
   return (
     <Wrapper>
       <Map />
       <Actionitems>
       {/*Header*/}
       <Header>
-        <PWLogo src="https://i.pinimg.com/564x/44/f7/6f/44f76fff00352daab6ff67385e5f3b9d.jpg" />
+        <PWLogo src="https://i.pinimg.com/236x/97/51/00/975100e8db266dc997ee76c0289b4676.jpg" />
         <Profile>
-          <Name>Glory Angelina</Name>
+          <Name>{user && user.name}</Name>
           <UserImage 
-          src="https://i.pinimg.com/236x/49/ce/d2/49ced2e29b6d4945a13be722bac54642.jpg"
+          src={user && user.photoUrl} onClick={()=>signOut(auth)}
           />
         </Profile>
          </Header>
@@ -62,7 +84,7 @@ const Name=tw.div`
 mr-4 w-20  
 `
 const UserImage=tw.img`
-h-16 w-16 rounded-full border border-gray-200 p-px
+h-16 w-16 rounded-full border border-gray-200 p-px cursor-pointer
 `
 const ActionButtons=tw.div`
 flex
