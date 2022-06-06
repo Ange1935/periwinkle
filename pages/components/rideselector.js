@@ -3,7 +3,7 @@ import React,{useEffect,useState} from 'react'
 import tw from "tailwind-styled-components"
 import { Amblist } from '../data/Amblist'
 
-const rideselector = ({pickupcoordinates,dropoffcoordinates}) => {
+const Rideselector = ({pickupcoordinates,dropoffcoordinates}) => {
   const [rideduration,setrideduration]=useState(0)
 
   useEffect(()=>{
@@ -36,7 +36,7 @@ const rideselector = ({pickupcoordinates,dropoffcoordinates}) => {
   )
 }
 
-export default rideselector
+export default Rideselector
 const Wrapper=tw.div`
 flex-1 overflow-y-scroll flex flex-col
 `
