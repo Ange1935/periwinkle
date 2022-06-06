@@ -11,23 +11,6 @@ import { useRouter } from 'next/router'
 
 export default function Home() {
 
-  const [user,setUser]=useState(null)
-  const router=useRouter()
-  useEffect(()=>{
-      return onAuthStateChanged(auth,user =>{
-        if(user){
-          setUser({
-            name:user.displayName,
-            photoUrl:user.photoURL,
-          })
-        }
-        else{
-          setUser(null)
-          router.push('/login')
-        }
-      })
-  },[])
-
   return (
     <Wrapper>
       <Map />
@@ -36,9 +19,9 @@ export default function Home() {
       <Header>
         <PWLogo src="https://i.pinimg.com/236x/97/51/00/975100e8db266dc997ee76c0289b4676.jpg" />
         <Profile>
-          <Name>{user && user.name}</Name>
+          <Name>Glory Angelina</Name>
           <UserImage 
-          src={user && user.photoUrl} onClick={()=>signOut(auth)}
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLG67OCTdsrpf_nDsSC03j5j2x7pSK7XOogQ&usqp=CAU"
           />
         </Profile>
          </Header>
