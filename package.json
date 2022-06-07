@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start -H 0.0.0.0 -p ${PORT:-8080}",
+    "build":"next build",
     "export":"npm run build && next export",
     "lint": "next lint",
     "test": "jest"
