@@ -4,12 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "babel src -d lib",
     "start": "next start -H 0.0.0.0 -p ${PORT:-8080}",
     "export":"npm run build && next export",
     "lint": "next lint",
-    "test": "jest",
-    "babel-version": "babel --version"
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.18.1",
@@ -29,7 +27,6 @@
     "nodemon": "^2.0.16",
     "postcss": "^8.4.14",
     "tailwind-styled-components": "^2.1.7",
-    "tailwindcss": "^3.0.24",
-    "babel-cli": "^6.6.5"
+    "tailwindcss": "^3.0.24"
   }
 }
